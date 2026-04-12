@@ -179,9 +179,9 @@ export default function Home() {
       <footer className="bg-[#381a08] text-white px-8 lg:px-20 py-20">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-end gap-12">
           <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-[#FFC542] rounded-3xl flex items-center justify-center text-5xl">🍿</div>
-              <h2 className="font-black text-4xl uppercase tracking-tighter">ПОПКОРН</h2>
+            <div className="flex items-center gap-3 mb-8"> 
+                <img src={logo} alt="Попкорн" className="w-14 h-14 object-contain" />
+                 <h2 className="font-black text-[#FFC542] text-4xl uppercase tracking-tighter">ПОПКОРН</h2>
             </div>
             <p className="font-bold text-2xl mb-1">Давай общаться!</p>
             <p className="opacity-70 text-xl underline">popcorn@magazin.com</p>
