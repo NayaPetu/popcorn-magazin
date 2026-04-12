@@ -4,6 +4,7 @@ import logo from "./assets/popcorn_header.png";
 import vkLogo from "./assets/vk_logo.png";
 import ytLogo from "./assets/yt_logo.png";
 import whoWeGuy from "./assets/who_we_guy.png";
+import coolGuy from "./assets/cool_guy.png";   // ← добавили
 
 function Eye({ mousePos }) {
   const eyeRef = useRef(null);
@@ -79,57 +80,54 @@ export default function Home() {
         </div>
       </section>
 
-{/* КТО МЫ? */}
-<section className="px-8 lg:px-16 py-24 max-w-7xl mx-auto">
-  {/* Используем grid: первая колонка фиксированная (для фото), вторая гибкая (для текста) */}
-  <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] items-center gap-12">
-    
-    {/* КОНТЕЙНЕР КАРТИНКИ: его размер всегда 400px, что бы ни происходило внутри */}
-    <div className="relative flex justify-center items-center h-full">
-      <div className="relative">
-        <img 
-          src={whoWeGuy} 
-          alt="Кто мы" 
-          /* МЕНЯЙ РАЗМЕР ТУТ: например, w-64, w-80 или w-[450px]. 
-             Текст справа НЕ ШЕЛОХНЕТСЯ, так как ограничен колонкой grid */
-          className="w-80 h-auto object-contain" 
-        />
-        
-        {/* Бабл: привязан к контейнеру картинки */}
-        <div className="absolute -top-4 -right-12 bg-[#F8EFD2] text-[#381a08] font-bold text-2xl px-6 py-2 rounded-3xl shadow-lg whitespace-nowrap">
-          КТО МЫ?
-          {/* Хвостик бабла (теперь смотрит на персонажа) */}
-          <div className="absolute -bottom-2 left-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[12px] border-t-[#F8EFD2] -rotate-[15deg]" />
+      {/* КТО МЫ? */}
+      <section className="px-8 lg:px-16 py-24 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] items-center gap-12">
+          <div className="relative flex justify-center items-center h-full">
+            <div className="relative">
+              <img 
+                src={whoWeGuy} 
+                alt="Кто мы" 
+                className="w-80 h-auto object-contain" 
+              />
+              <div className="absolute -top-4 -right-12 bg-[#F8EFD2] text-[#381a08] font-bold text-2xl px-6 py-2 rounded-3xl shadow-lg whitespace-nowrap">
+                КТО МЫ?
+                <div className="absolute -bottom-2 left-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[12px] border-t-[#F8EFD2] -rotate-[15deg]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="border-2 border-[#381a08] rounded-[40px] p-8 lg:p-12">
+            <p className="text-2xl font-bold leading-relaxed text-[#381a08]">
+              Мы научно популярный журнал.<br />
+              Нас завораживает окружающий мир, и мы хотим поделиться своим энтузиазмом через свою работу.<br />
+              Мы хотим показать, что мир, в котором мы живём работает, потому что существует наука.<br />
+              Наша миссия пробудить любопытство и интерес к миру.
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    {/* ТЕКСТ: всегда в своей колонке, обведен рамкой как на фото */}
-    <div className="border-2 border-[#381a08] rounded-[40px] p-8 lg:p-12">
-      <p className="text-2xl font-bold leading-relaxed text-[#381a08]">
-        Мы научно популярный журнал.<br />
-        Нас завораживает окружающий мир, и мы хотим поделиться своим энтузиазмом через свою работу.<br />
-        Мы хотим показать, что мир, в котором мы живём работает, потому что существует наука.<br />
-        Наша миссия пробудить любопытство и интерес к миру.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-      {/* ЧТО ПОСМОТРЕТЬ? */}
+      {/* ЧТО ПОСМОТРЕТЬ? — cool_guy.png точно как на картинке */}
       <section className="bg-[#381a08] px-8 lg:px-20 py-24 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-16">
+        <div className="max-w-7xl mx-auto relative">
+          
+          {/* Bubble + персонаж */}
+          <div className="flex justify-between items-center mb-16 relative">
             <div className="bg-white text-[#381a08] font-black text-xl px-10 py-3 rounded-[9999px] inline-flex items-center gap-3 shadow-lg">
               ЧТО ПОСМОТРЕТЬ?
-              <span className="text-5xl">⭐</span>
             </div>
-            <div className="text-7xl">😎</div>
+
+            {/* cool_guy.png — позиционирован точно как на картинке (сверху справа) */}
+            <img 
+              src={coolGuy} 
+              alt="Cool guy" 
+              className="absolute right-0 top-[-65px] w-36 lg:w-44 h-auto z-10"
+            />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
+            {/* Карточка Физика вокруг */}
             <div className="bg-white text-[#381a08] p-12 rounded-[48px]">
               <h3 className="text-4xl font-black mb-3 text-[#F26522] uppercase tracking-tighter">Физика вокруг</h3>
               <p className="font-bold text-xl mb-4">Физика из учебника — в жизни</p>
@@ -144,6 +142,7 @@ export default function Home() {
               </button>
             </div>
 
+            {/* Карточка Открой свет */}
             <div className="bg-white text-[#381a08] p-12 rounded-[48px]">
               <h3 className="text-4xl font-black mb-3 text-[#F26522] uppercase tracking-tighter">Открой свет</h3>
               <p className="font-bold text-xl mb-4">Свет и оптика по-новому</p>
@@ -185,10 +184,7 @@ export default function Home() {
           <p className="text-gray-500 mb-12 text-xl leading-relaxed max-w-4xl">
             От термоядерного синтеза в ядре Солнца до голубого неба над головой. Узнай, какой длинный путь проходит каждый фотон, который освещает твою комнату.
           </p>
-          <button 
-            onClick={() => navigate("/light")} 
-            className="bg-[#F26522] text-white px-16 py-7 rounded-3xl font-black uppercase text-2xl transition-colors duration-300 hover:bg-[#FFC542] hover:text-[#381a08]"
-          >
+          <button onClick={() => navigate("/light")} className="bg-[#F26522] text-white px-16 py-7 rounded-3xl font-black uppercase text-2xl transition-colors duration-300 hover:bg-[#FFC542] hover:text-[#381a08]">
             Скорее смотреть
           </button>
         </div>
