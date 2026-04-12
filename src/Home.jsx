@@ -4,7 +4,9 @@ import logo from "./assets/popcorn_header.png";
 import vkLogo from "./assets/vk_logo.png";
 import ytLogo from "./assets/yt_logo.png";
 import whoWeGuy from "./assets/who_we_guy.png";
-import coolGuy from "./assets/cool_guy.png";   // ← добавили
+import coolGuy from "./assets/cool_guy.png";
+import bigMouth from "./assets/big_mouth.png";
+import mouth from "./assets/mouth.svg";
 
 function Eye({ mousePos }) {
   const eyeRef = useRef(null);
@@ -16,17 +18,30 @@ function Eye({ mousePos }) {
       const dx = mousePos.x - (rect.left + rect.width / 2);
       const dy = mousePos.y - (rect.top + rect.height / 2);
       const angle = Math.atan2(dy, dx);
-      const distance = Math.min(Math.hypot(dx, dy) / 8, 28);
+      const distance = Math.min(Math.hypot(dx, dy) / 10, 80); 
       setOffset({ x: Math.cos(angle) * distance, y: Math.sin(angle) * distance });
     }
   }, [mousePos]);
 
   return (
-    <div ref={eyeRef} className="eye w-[140px] h-[140px] bg-white rounded-full flex items-center justify-center border-[14px] border-[#381a08] shadow-[inset_0_10px_20px_rgba(0,0,0,0.3),0_10px_20px_rgba(0,0,0,0.15)]">
-      <div className="pupil w-[68px] h-[68px] bg-[#381a08] rounded-full" style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }} />
+    <div 
+      ref={eyeRef} 
+      style={{ width: '240px', height: '240px' }}
+      className="bg-white rounded-full flex items-center justify-center border-[20px] border-white flex-shrink-0"
+    >
+      <div 
+        style={{ 
+          width: '110px', 
+          height: '110px',
+          transform: `translate(${offset.x}px, ${offset.y}px)` 
+        }}
+        className="bg-[#381a08] rounded-full" 
+      />
     </div>
   );
 }
+
+
 
 export default function Home() {
   const [mousePos, setPos] = useState({ x: 0, y: 0 });
@@ -57,7 +72,7 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* HERO */}
+{/* HERO — рот прижат к правому краю, глаза следят за курсором */}
       <section className="bg-[#FFC542] px-8 lg:px-20 py-20 lg:py-28 flex flex-col lg:flex-row justify-between items-center gap-12 w-full">
         <div className="max-w-2xl">
           <h1 className="text-[100px] leading-[0.85] font-black text-white mb-8 italic uppercase tracking-tighter">
@@ -69,15 +84,22 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="relative flex flex-col items-center">
-          <div className="flex gap-8">
-            <Eye mousePos={mousePos} />
-            <Eye mousePos={mousePos} />
-          </div>
-          <div className="mt-[-25px] w-[320px] h-[140px] bg-[#381a08] rounded-b-[160px] relative shadow-[0_20px_30px_rgba(0,0,0,0.3)]">
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[220px] h-[80px] bg-[#FF6B35] rounded-b-[110px] overflow-hidden" />
-          </div>
-        </div>
+{/* Большое лицо */}
+<div className="relative w-[480px] flex-shrink-0 overflow-visible mt-[-20px]"> 
+  {/* Контейнер для глаз */}
+  <div className="flex justify-end -space-x-8 mt-[-255px] ml-[10px] translate-x-[50px]  rotate-[-20deg] z-10 relative">
+      <Eye mousePos={mousePos} />
+      <Eye mousePos={mousePos} />
+  </div>
+
+  {/* Рот — заменен на mouth.svg */}
+  <img
+    src={mouth} // Убедись, что переменная mouth импортирована или укажи путь "mouth.svg"
+    alt="Рот Попкорна"
+    className="absolute top-[-90px] left-25 w-[550px] h-auto z-0" 
+  />
+</div>
+
       </section>
 
       {/* КТО МЫ? */}
@@ -108,17 +130,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ЧТО ПОСМОТРЕТЬ? — cool_guy.png точно как на картинке */}
+      {/* ЧТО ПОСМОТРЕТЬ? */}
       <section className="bg-[#381a08] px-8 lg:px-20 py-24 text-white">
         <div className="max-w-7xl mx-auto relative">
-          
-          {/* Bubble + персонаж */}
           <div className="flex justify-between items-center mb-16 relative">
             <div className="bg-white text-[#381a08] font-black text-xl px-10 py-3 rounded-[9999px] inline-flex items-center gap-3 shadow-lg">
               ЧТО ПОСМОТРЕТЬ?
             </div>
-
-            {/* cool_guy.png — позиционирован точно как на картинке (сверху справа) */}
             <img 
               src={coolGuy} 
               alt="Cool guy" 
@@ -127,7 +145,6 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* Карточка Физика вокруг */}
             <div className="bg-white text-[#381a08] p-12 rounded-[48px]">
               <h3 className="text-4xl font-black mb-3 text-[#F26522] uppercase tracking-tighter">Физика вокруг</h3>
               <p className="font-bold text-xl mb-4">Физика из учебника — в жизни</p>
@@ -142,7 +159,6 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Карточка Открой свет */}
             <div className="bg-white text-[#381a08] p-12 rounded-[48px]">
               <h3 className="text-4xl font-black mb-3 text-[#F26522] uppercase tracking-tighter">Открой свет</h3>
               <p className="font-bold text-xl mb-4">Свет и оптика по-новому</p>
@@ -195,8 +211,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-end gap-12">
           <div>
             <div className="flex items-center gap-3 mb-8"> 
-                <img src={logo} alt="Попкорн" className="w-14 h-14 object-contain" />
-                 <h2 className="font-black text-[#FFC542] text-4xl uppercase tracking-tighter">ПОПКОРН</h2>
+              <img src={logo} alt="Попкорн" className="w-14 h-14 object-contain" />
+              <h2 className="font-black text-[#FFC542] text-4xl uppercase tracking-tighter">ПОПКОРН</h2>
             </div>
             <p className="font-bold text-2xl mb-1">Давай общаться!</p>
             <p className="opacity-70 text-xl underline">popcorn@magazin.com</p>
