@@ -1,11 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "./assets/popcorn_header.png";
-import vkLogo from "./assets/vk_logo.png";
-import ytLogo from "./assets/yt_logo.png";
-import whoWeGuy from "./assets/who_we_guy.png";
-import coolGuy from "./assets/cool_guy.png";
-import mouth from "./assets/mouth.svg";
+import logo from "./assets/logo.svg";
+import vkLogo from "./assets/vk.svg";
+import ytLogo from "./assets/yt.svg";
+import whoWeGuy from "./assets/pop1.svg";
+import coolGuy from "./assets/pop2.svg";
+import mouth from "./assets/mouth_all.svg";
+import who from "./assets/who_we.svg";
+import what from "./assets/what_watch.svg";
+import logofutter from "./assets/logo_futter.svg";
 
 function Eye({ mousePos }) {
   const eyeRef = useRef(null);
@@ -62,12 +65,13 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-[#FCFDED] border-b border-[#3E1D08]/10 px-6 lg:px-14 py-4 flex justify-between items-center">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 hover:scale-110 transition-transform"
+          // className="hover:text-[#F06520] transition-colors"
         >
           <img src={logo} alt="Попкорн" className="w-9 h-9 object-contain" />
-          <span className="font-brand text-xl tracking-tight text-[#3E1D08] uppercase">ПОПКОРН</span>
+          <span className="font-heading text-xl tracking-tight text-[#3E1D08] uppercase ">ПОПКОРН</span>
         </button>
-        <nav className="flex gap-8 font-heading text-sm font-bold uppercase tracking-widest text-[#3E1D08]">
+        <nav className="flex gap-8 font-heading text-lg font-bold uppercase tracking-normal text-[#3E1D08]">
           <button onClick={() => scrollTo("physics-det")} className="hover:text-[#F06520] transition-colors">
             физика вокруг
           </button>
@@ -82,23 +86,23 @@ export default function Home() {
         {/* Текст */}
         <div className="pt-2 pb-14 max-w-[520px]">
           <h1 className="font-brand text-[86px] lg:text-[104px] leading-[0.88] uppercase text-[#FCFDED] mb-7">
-            ПРИВЕТ!<br />ЭТО<br />
-            <span className="text-[#F06520]">ПОПКОРН)</span>
+            ПРИВЕТ!<br />
+            <span className="text-[#F06520]"> ЭТО<br /> ПОПКОРН) </span>
           </h1>
-          <p className="font-heading font-bold text-xl text-[#FCFDED] leading-snug">
+          <p className="font-sans font-sm text-xl text-[#FCFDED] leading-snug">
             Здесь просто и весело о сложном
           </p>
-          <p className="font-heading font-bold text-xl text-[#F06520] leading-snug">
-            Нескучный научно популярный<br />журнал нового формата
+          <p className="font-sans font-sm text-xl text-[#F06520] leading-snug">
+            Нескучный научно популярный журнал <br />нового формата
           </p>
         </div>
 
         {/* Маскот-лицо */}
-        <div className="relative flex-shrink-0 self-end" style={{ width: 460, height: 340 }}>
+        <div className="relative flex-shrink-0 self-end" style={{ width: 460, height: 380 }}>
           {/* Глаза */}
           <div
             className="flex -space-x-6 absolute"
-            style={{ top: -60, right: -20, transform: "rotate(-18deg)" }}
+            style={{ top: -160, right: -20, transform: "rotate(-18deg)" }}
           >
             <Eye mousePos={mousePos} />
             <Eye mousePos={mousePos} />
@@ -108,7 +112,7 @@ export default function Home() {
             src={mouth}
             alt=""
             className="absolute"
-            style={{ bottom: 0, left: -60, width: 560 }}
+            style={{ bottom: 30, left:110, width: 560 }}
           />
         </div>
       </section>
@@ -120,9 +124,9 @@ export default function Home() {
           <div className="relative flex justify-center">
             <div className="relative">
               <img src={whoWeGuy} alt="Персонаж Попкорн" className="w-64 h-auto object-contain" />
-              <div className="absolute -top-3 right-[-56px] bg-[#F5E0AE] text-[#3E1D08] font-heading font-bold text-lg px-5 py-2 rounded-3xl shadow whitespace-nowrap">
-                КТО МЫ?
-                <div className="absolute -bottom-[10px] left-5 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[11px] border-t-[#F5E0AE]" />
+              <div className="absolute -top-[-20px] right-[-110px] inline-flex items-center justify-center">
+                <img src={who} alt="" className="w-32 h-auto" />
+                <span className="absolute -translate-y-2 font-brand font-bold text-lg text-[#3E1D08]">КТО МЫ?</span>
               </div>
             </div>
           </div>
@@ -143,16 +147,17 @@ export default function Home() {
       <section className="bg-[#3E1D08] px-6 lg:px-14 py-20">
         <div className="max-w-6xl mx-auto relative">
           {/* Заголовок-пузырь + маскот */}
-          <div className="flex items-end mb-10 relative">
-            <div className="bg-[#FCFDED] text-[#3E1D08] font-heading font-bold text-base px-7 py-3 rounded-full">
-              ЧТО ПОСМОТРЕТЬ?
+          <div className="flex justify-end items-center mb-10 pr-44 lg:pr-52">
+            <div className="relative inline-flex items-center justify-center">
+              <img src={what} alt="" className="w-52 h-auto" />
+              <span className="absolute -translate-y-2 font-brand font-bold text-base text-[#3E1D08]">ЧТО ПОСМОТРЕТЬ?</span>
             </div>
-            <img
-              src={coolGuy}
-              alt=""
-              className="absolute right-0 bottom-0 w-36 lg:w-44 h-auto"
-            />
           </div>
+          <img
+            src={coolGuy}
+            alt=""
+            className="absolute right-0 -top-8 w-38 lg:w-44 h-auto z-10"
+          />
 
           {/* Карточки */}
           <div className="grid lg:grid-cols-2 gap-6">
@@ -167,7 +172,7 @@ export default function Home() {
               </p>
               <button
                 onClick={() => scrollTo("physics-det")}
-                className="w-full bg-[#F06520] text-white py-4 rounded-2xl font-heading font-bold uppercase tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
+                className="w-full bg-[#F06520] text-white py-4 rounded-full font-sans font-bold  tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
               >
                 Скорее смотреть
               </button>
@@ -183,7 +188,7 @@ export default function Home() {
               </p>
               <button
                 onClick={() => scrollTo("light-det")}
-                className="w-full bg-[#F06520] text-white py-4 rounded-2xl font-heading font-bold uppercase tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
+                className="w-full bg-[#F06520] text-white py-4 rounded-full font-sans font-bold  tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
               >
                 Скорее смотреть
               </button>
@@ -194,7 +199,7 @@ export default function Home() {
 
       {/* ── ФИЗИКА ВОКРУГ — видео ── */}
       <section id="physics-det" className="px-6 lg:px-14 pt-16 pb-4 max-w-6xl mx-auto">
-        <h2 className="font-brand text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-8">
+        <h2 className="font-heading text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-8">
           Физика вокруг
         </h2>
         <div className="border-2 border-[#3E1D08] rounded-[28px] p-8 lg:p-10">
@@ -211,7 +216,7 @@ export default function Home() {
           </p>
           <button
             onClick={() => navigate("/physics")}
-            className="bg-[#F06520] text-white px-10 py-4 rounded-2xl font-heading font-bold uppercase tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
+            className="bg-[#F06520] text-white px-10 py-4 rounded-full font-sans font-bold  tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
           >
             Скорее смотреть
           </button>
@@ -220,7 +225,7 @@ export default function Home() {
 
       {/* ── ОТКРОЙ СВЕТ — видео ── */}
       <section id="light-det" className="px-6 lg:px-14 pt-16 pb-20 max-w-6xl mx-auto">
-        <h2 className="font-brand text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-8">
+        <h2 className="font-heading text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-8">
           Открой свет
         </h2>
         <div className="border-2 border-[#3E1D08] rounded-[28px] p-8 lg:p-10">
@@ -236,7 +241,7 @@ export default function Home() {
           </p>
           <button
             onClick={() => navigate("/light")}
-            className="bg-[#F06520] text-white px-10 py-4 rounded-2xl font-heading font-bold uppercase tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
+            className="bg-[#F06520] text-white px-10 py-4 rounded-full font-sans font-bold  tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
           >
             Скорее смотреть
           </button>
@@ -248,17 +253,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex justify-between items-start">
           {/* Левая часть */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="Попкорн" className="w-10 h-10 object-contain" />
-              <div className="leading-none">
-                <div className="font-brand text-[#FFC044] text-2xl uppercase">ПОПКОРН</div>
-                <div className="text-[#FFC044]/70 text-xs mt-0.5 tracking-wide">взрыв знаний</div>
-              </div>
-            </div>
-            <p className="font-heading font-bold text-lg mb-1">Давай общаться!</p>
+            <img src={logofutter} alt="Попкорн" className="mb-6 w-50 h-auto" />
+            <p className="font-sans font-bold text-lg -mb-2 text-[#F5E0AE]">Давай общаться!</p>
             <a
               href="mailto:popcorn@magazin.com"
-              className="text-sm text-white/60 underline hover:text-white/90 transition-colors"
+              className="text-sm text-[#F5E0AE] underline hover:text-[#F5E0AE]/80 transition-colors"
             >
               popcorn@magazin.com
             </a>
@@ -268,9 +267,11 @@ export default function Home() {
           <div className="flex flex-col items-end gap-6">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="w-11 h-11 border border-white/30 rounded-full flex items-center justify-center text-lg hover:bg-white/10 transition-colors"
+              className="text-[#FFC044] hover:text-[#F06520] transition-colors"
             >
-              ↑
+              <svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 40V10M18 10L6 22M18 10L30 22" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
             <div className="flex gap-4">
               <a href="#" className="hover:opacity-75 transition-opacity">
