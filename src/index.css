@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Toyz';
+  src: url('/fonts/Toyz.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-brand: 'Lilita One', cursive;
+  --font-brand: 'Toyz', 'Lilita One', cursive;
   --font-heading: 'GetVoIP Grotesque', 'Geologica', sans-serif;
   --font-sans: 'Geologica', sans-serif;
 }
