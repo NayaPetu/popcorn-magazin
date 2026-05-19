@@ -62,16 +62,15 @@ export default function Home() {
     <div className="bg-[#FCFDED] text-[#3E1D08]">
 
       {/* ── ШАПКА ── */}
-      <header className="sticky top-0 z-50 bg-[#FCFDED] border-b border-[#3E1D08]/10 px-6 lg:px-14 py-4 flex justify-between items-center">
+      <header className="sticky top-0 z-50 bg-[#FCFDED] border-b border-[#3E1D08]/10 px-4 sm:px-6 lg:px-14 py-3 sm:py-4 flex justify-between items-center">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-3 hover:scale-110 transition-transform"
-          // className="hover:text-[#F06520] transition-colors"
+          className="flex items-center gap-2 sm:gap-3 hover:scale-110 transition-transform"
         >
-          <img src={logo} alt="Попкорн" className="w-9 h-9 object-contain" />
-          <span className="font-heading text-xl tracking-tight text-[#3E1D08] uppercase ">ПОПКОРН</span>
+          <img src={logo} alt="Попкорн" className="w-7 h-7 sm:w-9 sm:h-9 object-contain" />
+          <span className="font-heading text-base sm:text-xl tracking-tight text-[#3E1D08] uppercase">ПОПКОРН</span>
         </button>
-        <nav className="flex gap-8 font-heading text-lg font-bold uppercase tracking-normal text-[#3E1D08]">
+        <nav className="flex gap-3 sm:gap-5 lg:gap-8 font-heading text-xs sm:text-sm lg:text-lg font-bold uppercase tracking-normal text-[#3E1D08]">
           <button onClick={() => scrollTo("physics-det")} className="hover:text-[#F06520] transition-colors">
             физика вокруг
           </button>
@@ -82,23 +81,23 @@ export default function Home() {
       </header>
 
       {/* ── ГЕРОЙ ── */}
-      <section className="bg-[#FFC044] px-6 lg:px-14 pt-14 pb-0 flex justify-between items-start overflow-hidden min-h-[520px]">
+      <section className="bg-[#FFC044] px-4 sm:px-6 lg:px-14 pt-10 md:pt-14 pb-0 flex justify-between items-start overflow-hidden min-h-85 sm:min-h-105 md:min-h-130">
         {/* Текст */}
-        <div className="pt-2 pb-14 max-w-[520px]">
-          <h1 className="font-brand text-[86px] lg:text-[104px] leading-[0.88] uppercase text-[#FCFDED] mb-7">
+        <div className="pt-2 pb-10 md:pb-14 max-w-full md:max-w-130">
+          <h1 className="font-brand text-[52px] sm:text-[72px] md:text-[86px] lg:text-[104px] leading-[0.88] uppercase text-[#FCFDED] mb-5 md:mb-7">
             ПРИВЕТ!<br />
             <span className="text-[#F06520]"> ЭТО<br /> ПОПКОРН) </span>
           </h1>
-          <p className="font-sans font-sm text-xl text-[#FCFDED] leading-snug">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-[#FCFDED] leading-snug">
             Здесь просто и весело о сложном
           </p>
-          <p className="font-sans font-sm text-xl text-[#F06520] leading-snug">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-[#F06520] leading-snug">
             Нескучный научно популярный журнал <br />нового формата
           </p>
         </div>
 
-        {/* Маскот-лицо */}
-        <div className="relative flex-shrink-0 self-end" style={{ width: 460, height: 380 }}>
+        {/* Маскот-лицо — скрыт на телефоне, виден с md */}
+        <div className="hidden md:block relative shrink-0 self-end" style={{ width: 460, height: 380 }}>
           {/* Глаза */}
           <div
             className="flex -space-x-6 absolute"
@@ -112,14 +111,14 @@ export default function Home() {
             src={mouth}
             alt=""
             className="absolute"
-            style={{ bottom: 30, left:110, width: 560 }}
+            style={{ bottom: 30, left: 110, width: 560 }}
           />
         </div>
       </section>
 
       {/* ── КТО МЫ ── */}
-      <section className="px-6 lg:px-14 py-20 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] items-center gap-12">
+      <section className="px-4 sm:px-6 lg:px-14 py-12 md:py-20 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] lg:grid-cols-[340px_1fr] items-center gap-8 md:gap-12">
           {/* Маскот + пузырь */}
           <div className="relative flex justify-center">
             <div className="relative">
@@ -144,23 +143,23 @@ export default function Home() {
       </section>
 
       {/* ── ЧТО ПОСМОТРЕТЬ ── */}
-      <section className="bg-[#3E1D08] px-6 lg:px-14 py-20">
+      <section className="bg-[#3E1D08] px-4 sm:px-6 lg:px-14 py-12 md:py-20">
         <div className="max-w-6xl mx-auto relative">
           {/* Заголовок-пузырь + маскот */}
-          <div className="flex justify-end items-center mb-10 pr-44 lg:pr-52">
+          <div className="flex justify-end items-center mb-8 md:mb-10 pr-16 sm:pr-28 md:pr-44 lg:pr-52">
             <div className="relative inline-flex items-center justify-center">
-              <img src={what} alt="" className="w-52 h-auto" />
-              <span className="absolute -translate-y-2 font-brand font-bold text-base text-[#3E1D08]">ЧТО ПОСМОТРЕТЬ?</span>
+              <img src={what} alt="" className="w-36 sm:w-44 md:w-52 h-auto" />
+              <span className="absolute -translate-y-2 font-brand font-bold text-xs sm:text-sm md:text-base text-[#3E1D08]">ЧТО ПОСМОТРЕТЬ?</span>
             </div>
           </div>
           <img
             src={coolGuy}
             alt=""
-            className="absolute right-0 -top-8 w-38 lg:w-44 h-auto z-10"
+            className="absolute right-0 -top-8 w-24 sm:w-32 md:w-38 lg:w-44 h-auto z-10"
           />
 
           {/* Карточки */}
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6">
             {/* Физика вокруг */}
             <div className="bg-[#FCFDED] text-[#3E1D08] p-8 lg:p-10 rounded-[28px] flex flex-col">
               <h3 className="font-heading font-bold text-2xl text-[#F06520] mb-1">Физика вокруг</h3>
@@ -198,11 +197,11 @@ export default function Home() {
       </section>
 
       {/* ── ФИЗИКА ВОКРУГ — видео ── */}
-      <section id="physics-det" className="px-6 lg:px-14 pt-16 pb-4 max-w-6xl mx-auto">
-        <h2 className="font-heading text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-8">
+      <section id="physics-det" className="px-4 sm:px-6 lg:px-14 pt-12 md:pt-16 pb-4 max-w-6xl mx-auto">
+        <h2 className="font-heading text-[44px] sm:text-[60px] md:text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-6 md:mb-8">
           Физика вокруг
         </h2>
-        <div className="border-2 border-[#3E1D08] rounded-[28px] p-8 lg:p-10">
+        <div className="border-2 border-[#3E1D08] rounded-[24px] md:rounded-[28px] p-6 sm:p-8 lg:p-10">
           <h3 className="font-heading font-bold text-xl text-[#FFC044] mb-2">
             Почему взрывается попкорн?
           </h3>
@@ -224,11 +223,11 @@ export default function Home() {
       </section>
 
       {/* ── ОТКРОЙ СВЕТ — видео ── */}
-      <section id="light-det" className="px-6 lg:px-14 pt-16 pb-20 max-w-6xl mx-auto">
-        <h2 className="font-heading text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-8">
+      <section id="light-det" className="px-4 sm:px-6 lg:px-14 pt-12 md:pt-16 pb-14 md:pb-20 max-w-6xl mx-auto">
+        <h2 className="font-heading text-[44px] sm:text-[60px] md:text-[72px] lg:text-[88px] leading-none text-[#F06520] mb-6 md:mb-8">
           Открой свет
         </h2>
-        <div className="border-2 border-[#3E1D08] rounded-[28px] p-8 lg:p-10">
+        <div className="border-2 border-[#3E1D08] rounded-[24px] md:rounded-[28px] p-6 sm:p-8 lg:p-10">
           <h3 className="font-heading font-bold text-xl text-[#FFC044] mb-2">
             Как сделать свет
           </h3>
@@ -249,8 +248,8 @@ export default function Home() {
       </section>
 
       {/* ── ФУТЕР ── */}
-      <footer className="bg-[#3E1D08] text-white px-6 lg:px-14 py-12">
-        <div className="max-w-6xl mx-auto flex justify-between items-start">
+      <footer className="bg-[#3E1D08] text-white px-4 sm:px-6 lg:px-14 py-10 md:py-12">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start gap-8 sm:gap-0">
           {/* Левая часть */}
           <div>
             <img src={logofutter} alt="Попкорн" className="mb-6 w-50 h-auto" />

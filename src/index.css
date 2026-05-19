@@ -19,9 +19,14 @@ body {
   background: #FCFDED;
   color: #3E1D08;
   font-family: 'Geologica', sans-serif;
+  cursor: url('./src/assets/cursor.svg'), auto;
 }
 
 #root {
   width: 100%;
   margin: 0;
+}
+
+a, button {
+  cursor: url('./src/assets/cursor.svg'), pointer;
 }
