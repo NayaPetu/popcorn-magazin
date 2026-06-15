@@ -70,10 +70,10 @@ export default function PhysicsVideo() {
           <span className="font-heading text-base sm:text-xl tracking-tight text-[#3E1D08] uppercase">ПОПКОРН</span>
         </button>
         <nav className="hidden sm:flex gap-4 lg:gap-8 font-heading text-sm lg:text-lg font-bold uppercase tracking-normal text-[#3E1D08]">
-          <button onClick={() => navigate("/")} className="hover:text-[#F06520] transition-colors">
+          <button onClick={() => navigate("/physics")} className="hover:text-[#F06520] transition-colors">
             физика вокруг
           </button>
-          <button onClick={() => navigate("/")} className="hover:text-[#F06520] transition-colors">
+          <button onClick={() => navigate("/light")} className="hover:text-[#F06520] transition-colors">
             открой свет
           </button>
         </nav>
@@ -413,7 +413,7 @@ export default function PhysicsVideo() {
           </svg>
 
           {/* Карточка */}
-          <div className="bg-white rounded-[24px] p-8 max-w-xl">
+           <div className="bg-white rounded-[24px] p-8 max-w-xl">
             <h3 className="font-heading text-xl font-bold text-[#F06520] mb-1">
               Как сделать свет
             </h3>
@@ -424,12 +424,16 @@ export default function PhysicsVideo() {
               От термоядерного синтеза в ядре Солнца до голубого неба над головой.
               Узнай, какой длинный путь проходит каждый фотон, который освещает твою комнату.
             </p>
-            <button className="bg-[#F06520] text-white px-8 py-3 rounded-full font-sans font-bold tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors">
+            <button
+              onClick={() => navigate("/light")}
+              className="bg-[#F06520] text-white px-8 py-3 rounded-full font-sans font-bold tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
+            >
               Скорее смотреть
             </button>
           </div>
         </div>
       </div>
+
 
       {/* ── ФУТЕР ── */}
       <footer className="bg-[#3E1D08] text-white px-6 lg:px-14 py-12">
