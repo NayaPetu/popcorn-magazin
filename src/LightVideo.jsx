@@ -159,7 +159,7 @@ export default function LightVideo() {
               preload="metadata"
               poster="/images/open-light-poster.jpg"
             >
-              <source src="/video/open-light.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}video/open-light.mp4`} type="video/mp4" />
               Ваш браузер не поддерживает видео.
             </video>
           </div>

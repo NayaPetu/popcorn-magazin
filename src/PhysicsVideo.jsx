@@ -103,7 +103,7 @@ export default function PhysicsVideo() {
                 style={{ paddingTop: "56.25%" }}
               >
               <video
-                src="/video/Final_POP3.mp4"
+                src={`${import.meta.env.BASE_URL}video/Final_POP3.mp4`}
                 className="absolute inset-0 w-full h-full"
                 controls
               />
