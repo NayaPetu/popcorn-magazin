@@ -1,16 +1,20 @@
-// import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { copyFileSync } from 'fs'
 
 export default defineConfig({
+  plugins: [
+    react(),
+    {
+      name: 'copy-index-to-404',
+      closeBundle() {
+        copyFileSync('dist/index.html', 'dist/404.html')
+      },
+    },
+  ],
+  base: '/popcorn_proj/',
   server: {
     host: '0.0.0.0',
-    port: 5173
-  }
+    port: 5173,
+  },
 })
