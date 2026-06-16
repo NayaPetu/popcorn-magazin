@@ -9,10 +9,12 @@ import pops2 from "./assets/pops_2.png";
 import pops3 from "./assets/pops_3.png";
 import pops4 from "./assets/pops_4.png";
 import PopcornAnimation from "./components/popcorn-scene";
+import MoleculeSimulation from "./components/MoleculeSimulation";
 import what_watch_next from "./assets/what_watch_next.svg";
 
 export default function PhysicsVideo() {
   const [animKey, setAnimKey] = useState(0);
+  const [animPlaying, setAnimPlaying] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
   const [methodOpen, setMethodOpen] = useState(false);
   const [answers, setAnswers] = useState({});
@@ -22,6 +24,7 @@ export default function PhysicsVideo() {
   const restartAnim = () => {
     try { localStorage.removeItem('popcorn-anim:t'); } catch {}
     setAnimKey(k => k + 1);
+    setAnimPlaying(true);
   };
 
   const QUESTIONS = [
@@ -70,17 +73,17 @@ export default function PhysicsVideo() {
           <span className="font-heading text-base sm:text-xl tracking-tight text-[#3E1D08] uppercase">ПОПКОРН</span>
         </button>
         <nav className="hidden sm:flex gap-4 lg:gap-8 font-heading text-sm lg:text-lg font-bold uppercase tracking-normal text-[#3E1D08]">
-          <button onClick={() => navigate("/physics")} className="hover:text-[#F06520] transition-colors">
+          <button onClick={() => navigate("/physics")} className="hover:text-[#F06520] hover:-translate-y-1 transition-all duration-200">
             физика вокруг
           </button>
-          <button onClick={() => navigate("/light")} className="hover:text-[#F06520] transition-colors">
+          <button onClick={() => navigate("/light")} className="hover:text-[#F06520] hover:-translate-y-1 transition-all duration-200">
             открой свет
           </button>
         </nav>
       </header>
 
       {/* ── ВИДЕО ── */}
-      <div className=" bg-[#3E1D08] px-6 lg:px-14 pt-10 pb-4 max-w-6xl mx-auto">
+      {/* <div className=" bg-[#3E1D08] px-6 lg:px-14 pt-10 pb-4 max-w-6xl mx-auto">
         <div className="bg-[#3E1D08] rounded-[28px] p-4">
           <div className="relative w-full overflow-hidden rounded-[18px]" style={{ paddingTop: "56.25%" }}>
             <iframe
@@ -89,6 +92,22 @@ export default function PhysicsVideo() {
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
               allowFullScreen
             />
+          </div>
+        </div>
+      </div> */}
+      <div className="bg-[#3E1D08] w-full">
+         <div className="px-6 lg:px-14 pt-10 pb-4 max-w-6xl mx-auto">
+           <div className="rounded-[28px] p-4">
+             <div
+                className="relative w-full overflow-hidden rounded-[18px]"
+                style={{ paddingTop: "56.25%" }}
+              >
+              <video
+                src="/video/Final_POP3.mp4"
+                className="absolute inset-0 w-full h-full"
+                controls
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -117,7 +136,7 @@ export default function PhysicsVideo() {
         </div>
 
         {/* Вводный текст */}
-        <p className="text-base leading-relaxed text-[#3E1D08] mb-12 max-w-2xl">
+        <p className="text-base leading-relaxed text-[#3E1D08] mb-12 max-w-2xl mx-auto">
           Ты когда-нибудь стоял у микроволновки и смотрел, как бумажный пакет вдруг начинает
           раздуваться, а потом — БАХ! — оттуда доносится целая серия весёлых хлопков? А когда
           открываешь пакет, внутри гора белых пушистых хлопьев. Это попкорн. Но почему обычное
@@ -126,17 +145,17 @@ export default function PhysicsVideo() {
         </p>
 
         {/* Подзаголовок раздела */}
-        <h2 className="text-base font-bold text-3xl lg:text-5xl text-[#3E1D08] mb-6">
+        <h2 className="text-base font-bold text-3xl lg:text-4xl text-[#3E1D08] mb-4 ">
           Что говорит молекулярно-кинетическая теория?
         </h2>
 
         {/* Текст раздела */}
-        <p className="text-base leading-relaxed text-[#3E1D08] mb-5 max-w-2xl">
+        <p className="text-base leading-relaxed text-[#3E1D08] mb-5 max-w-2xl mx-auto">
           Любое вещество, даже твёрдое зерно, состоит из невероятно маленьких частиц — молекул,
           между которыми существуют промежутки. Эти молекулы постоянно и хаотично движутся и
           взаимодействуют друг с другом: притягиваются, отталкиваются, влияют друг на друга.
         </p>
-        <p className="text-base leading-relaxed text-[#3E1D08] mb-12 max-w-2xl">
+        <p className="text-base leading-relaxed text-[#3E1D08] mb-12 max-w-2xl mx-auto">
           Это называется молекулярно-кинетической теорией (сокращённо — МКТ). Именно эта теория
           объясняет физические свойства веществ с точки зрения движения и взаимодействия молекул.
           Воспользуемся этими знаниями, чтобы понять, почему с зернышком кукурузы происходит такой
@@ -152,7 +171,7 @@ export default function PhysicsVideo() {
         <h2 className="text-base font-bold text-3xl lg:text-4xl text-[#3E1D08] mb-4">
           Что внутри зерна?
         </h2>
-        <p className="text-base leading-relaxed text-[#3E1D08] mb-10 max-w-2xl">
+        <p className="text-base leading-relaxed text-[#3E1D08] mb-10 max-w-2xl mx-auto">
           Возьмём одно сырое зерно попкорна. Снаружи — твёрдая, почти герметичная оболочка.
           Внутри — крахмал и несколько капелек воды.
         </p>
@@ -163,12 +182,13 @@ export default function PhysicsVideo() {
         </div>
 
         {/* Текст после картинки */}
-        <div className="max-w-2xl flex flex-col gap-5 text-base leading-relaxed text-[#3E1D08]">
+        <div className="max-w-2xl mx-auto flex flex-col gap-5 text-base leading-relaxed text-[#3E1D08]">
           <p>
             Когда мы начинаем греть зерно, сначала нагревается его внешняя часть. А потом тепло
-            передаётся внутрь. Этот процесс называется теплопроводностью. Благодаря ему всё зерно
+            передаётся внутрь. Этот процесс называется теплопроводностью — передачей энергии от более нагретых участков тела к менее нагретым за счёт движения и взаимодействия молекул. Благодаря ему всё зерно
             становится горячим.
           </p>
+          <MoleculeSimulation />
           <p>
             По мере нагрева внутренняя энергия молекул растёт. Они начинают двигаться всё быстрее
             и быстрее. Особенно это заметно у молекул воды.
@@ -199,7 +219,7 @@ export default function PhysicsVideo() {
           style={{ paddingTop: "56.25%" }}
         >
           <div className="absolute inset-0">
-            <PopcornAnimation key={animKey} />
+            <PopcornAnimation key={animKey} playing={animPlaying} />
           </div>
         </div>
         <div className="flex justify-center mt-6">
@@ -207,14 +227,14 @@ export default function PhysicsVideo() {
             onClick={restartAnim}
             className="bg-[#F06520] text-white px-10 py-4 rounded-full font-sans font-bold tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
           >
-            нагреть зерно попкорна
+            Нагреть зерно попкорна
           </button>
         </div>
       </div>
 
       {/* ── КОНЕЦ СТАТЬИ ── */}
       <div className="px-6 lg:px-14 pb-16 max-w-6xl mx-auto">
-        <div className="max-w-2xl flex flex-col gap-4 text-base leading-relaxed text-[#3E1D08] mb-10">
+        <div className="max-w-2xl mx-auto flex flex-col gap-4 text-base leading-relaxed text-[#3E1D08] mb-10">
           <p>Теперь ты знаешь физику попкорна!</p>
           <div>
             <p className="mb-2">Всё благодаря этим процессам:</p>
@@ -413,20 +433,20 @@ export default function PhysicsVideo() {
           </svg>
 
           {/* Карточка */}
-           <div className="bg-white rounded-[24px] p-8 max-w-xl">
-            <h3 className="font-heading text-xl font-bold text-[#F06520] mb-1">
+           <div className="bg-[#FCFDED] border border-[#3E1D08]/30 rounded-[24px] p-6 sm:p-8 max-w-5xl">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#FFC044] mb-1">
               Как сделать свет
             </h3>
-            <p className="font-sans font-bold text-sm text-[#3E1D08] mb-3">
+            <p className="font-sans font-bold text-sm sm:text-base text-[#3E1D08] mb-3">
               Пошаговая инструкция по созданию солнечного света
             </p>
-            <p className="text-sm leading-relaxed text-[#3E1D08] mb-6">
+            <p className="text-sm leading-relaxed text-[#3E1D08] mb-6 max-w-4xl">
               От термоядерного синтеза в ядре Солнца до голубого неба над головой.
               Узнай, какой длинный путь проходит каждый фотон, который освещает твою комнату.
             </p>
             <button
               onClick={() => navigate("/light")}
-              className="bg-[#F06520] text-white px-8 py-3 rounded-full font-sans font-bold tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
+              className="bg-[#F06520] text-white px-10 py-4 rounded-full font-sans font-bold tracking-wide hover:bg-[#FFC044] hover:text-[#3E1D08] transition-colors"
             >
               Скорее смотреть
             </button>
@@ -443,10 +463,10 @@ export default function PhysicsVideo() {
             <img src={logofutter} alt="Попкорн" className="mb-6 w-50 h-auto" />
             <p className="font-sans font-bold text-lg -mb-2 text-[#F5E0AE]">Давай общаться!</p>
             <a
-              href="mailto:popcorn@magazin.com"
+              href="mailto:popcorn@magazin-p.ru"
               className="text-sm text-[#F5E0AE] underline hover:text-[#F5E0AE]/80 transition-colors"
             >
-              popcorn@magazin.com
+              popcorn@magazin-p.ru
             </a>
           </div>
 
@@ -461,10 +481,10 @@ export default function PhysicsVideo() {
               </svg>
             </button>
             <div className="flex gap-4">
-              <a href="#" className="hover:opacity-75 transition-opacity">
+              <a href="https://vkvideo.ru/@club238840885" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
                 <img src={vkLogo} alt="ВКонтакте" className="w-10 h-10" />
               </a>
-              <a href="#" className="hover:opacity-75 transition-opacity">
+              <a href="https://www.youtube.com/@popcorn-magazin" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
                 <img src={ytLogo} alt="YouTube" className="w-10 h-10" />
               </a>
             </div>

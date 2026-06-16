@@ -691,9 +691,9 @@ function TimestampLabel() {
 }
 
 // ── Full scene ──────────────────────────────────────────────────────────────
-function PopcornAnimation() {
+function PopcornAnimation({ playing = false }) {
   return (
-    <Stage width={1920} height={1080} duration={12} background="#0a0504" persistKey="popcorn-anim">
+    <Stage width={1920} height={1080} duration={12} background="#0a0504" persistKey="popcorn-anim" autoplay={playing} showControls={false}>
       <TimestampLabel />
       <BackgroundScene />
       <Camera>

@@ -111,10 +111,10 @@ function Footer() {
           <img src={logofutter} alt="Попкорн" className="mb-6 w-50 h-auto" />
           <p className="font-sans font-bold text-lg -mb-2 text-[#F5E0AE]">Давай общаться!</p>
           <a
-            href="mailto:popcorn@magazin.com"
+            href="mailto:popcorn@magazin-p.ru"
             className="text-sm text-[#F5E0AE] underline hover:text-[#F5E0AE]/80 transition-colors"
           >
-            popcorn@magazin.com
+            popcorn@magazin-p.ru
           </a>
         </div>
 
@@ -129,10 +129,10 @@ function Footer() {
             </svg>
           </button>
           <div className="flex gap-4">
-            <a href="#" className="hover:opacity-75 transition-opacity">
+            <a href="https://vkvideo.ru/@club238840885" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
               <img src={vkLogo} alt="ВКонтакте" className="w-10 h-10" />
             </a>
-            <a href="#" className="hover:opacity-75 transition-opacity">
+            <a href="https://www.youtube.com/@popcorn-magazin" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
               <img src={ytLogo} alt="YouTube" className="w-10 h-10" />
             </a>
           </div>

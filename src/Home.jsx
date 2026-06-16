@@ -51,6 +51,8 @@ export default function Home() {
 
   return (
     <main className="home-page">
+
+      {/* ── ШАПКА ──
       <header className="home-header">
         <button
           className="home-logo-button"
@@ -65,8 +67,29 @@ export default function Home() {
           <button onClick={() => scrollTo("physics-det")}>физика вокруг</button>
           <button onClick={() => scrollTo("light-det")}>открой свет</button>
         </nav>
-      </header>
+      </header> */}
 
+      {/* ── ШАПКА ── */}
+            <header className="sticky top-0 z-50 bg-[#FCFDED] border-b border-[#3E1D08]/10 px-4 sm:px-6 lg:px-14 py-3 sm:py-4 flex justify-between items-center">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="flex items-center gap-2 sm:gap-3 hover:scale-110 transition-transform"
+                aria-label="На главную"
+              >
+                <img src={logo} alt="Попкорн" className="w-7 h-7 sm:w-9 sm:h-9 object-contain" />
+                <span className="font-heading text-base sm:text-xl tracking-tight text-[#3E1D08] uppercase">ПОПКОРН</span>
+              </button>
+              <nav className="flex gap-3 sm:gap-5 lg:gap-8 font-heading text-xs sm:text-sm lg:text-lg font-bold uppercase tracking-normal text-[#3E1D08]" aria-label="Главная навигация">
+                <button onClick={() => scrollTo("physics-det")} className="transition-all duration-300 hover:text-[#F06520] hover:-translate-y-1">
+                  физика вокруг
+                </button>
+                <button onClick={() => scrollTo("light-det")} className="transition-all duration-300 hover:text-[#F06520] hover:-translate-y-1">
+                  открой свет
+                </button>
+              </nav>
+            </header>
+
+      {/* ── ГЕРОЙ ── */}
       <section className="home-hero" aria-labelledby="home-title">
         <div className="home-hero-inner">
           <h1 id="home-title" className="home-hero-title">
@@ -80,6 +103,7 @@ export default function Home() {
             <p className="home-hero-orange-line">Нескучный научно популярный<br />журнал нового формата</p>
           </div>
 
+          {/* Маскот-лицо */}
           <div className="home-hero-face" aria-hidden="true">
             <div className="home-hero-eyes">
               <Eye mousePos={mousePos} />
@@ -90,6 +114,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── КТО МЫ ── */}
       <section className="home-about" aria-labelledby="about-title">
         <div className="home-wide home-about-grid">
           <div className="home-about-person" aria-hidden="true">
@@ -104,13 +129,14 @@ export default function Home() {
             <p>
               «Попкорн» — это журнал для неугомонных умов. Каждый интересный научный факт,
               подобно зерну кукурузы, под действием правильно подобранного «нагрева» внезапно
-              взрывается в голове читателя, превращая сухую информацию в яркое, воздушное и
-              запоминающееся озарение.
+              взрывается в голове читателя, превращая сухую информацию в яркое, воздушное 
+              и запоминающееся озарение.
             </p>
           </div>
         </div>
       </section>
 
+      {/* ── ЧТО ПОСМОТРЕТЬ ── */}
       <section className="home-watch" aria-labelledby="watch-title">
         <div className="home-wide home-watch-inner">
           <div className="home-watch-bubble" aria-hidden="true">
@@ -143,6 +169,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── ФИЗИКА ВОКРУГ — видео ── */}
       <section id="physics-det" className="home-detail home-detail-physics" aria-labelledby="physics-title">
         <div className="home-wide">
           <h2 id="physics-title">Физика вокруг</h2>
@@ -158,6 +185,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── ОТКРОЙ СВЕТ — видео ── */}
       <section id="light-det" className="home-detail home-detail-light" aria-labelledby="light-title">
         <div className="home-wide">
           <h2 id="light-title">Открой свет</h2>
@@ -173,12 +201,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── ФУТЕР ── */}
       <footer className="home-footer">
         <div className="home-wide home-footer-inner">
           <div className="home-footer-left">
             <img src={logofutter} alt="Попкорн — взрыв знаний" className="home-footer-logo" />
             <p>Давай общаться!</p>
-            <a href="mailto:popcorn@magazin.com">popcorn@magazin.com</a>
+            <a href="mailto:popcorn@magazin-p.ru">popcorn@magazin-p.ru</a>
           </div>
 
           <div className="home-footer-right">
@@ -192,8 +221,8 @@ export default function Home() {
               </svg>
             </button>
             <div className="home-socials">
-              <a href="#" aria-label="ВКонтакте"><img src={vkLogo} alt="" /></a>
-              <a href="#" aria-label="YouTube"><img src={ytLogo} alt="" /></a>
+              <a href="https://vkvideo.ru/@club238840885" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте"><img src={vkLogo} alt="" /></a>
+              <a href="https://www.youtube.com/@popcorn-magazin" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src={ytLogo} alt="" /></a>
             </div>
           </div>
         </div>
