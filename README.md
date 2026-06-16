@@ -1,16 +1,96 @@
-# React + Vite
+# Попкорн — научно-популярный журнал
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Сайт научно-популярного журнала «Попкорн» — нескучная наука для школьников нового формата.
+Журнал превращает сложные физические явления в доступные и увлекательные истории.
 
-Currently, two official plugins are available:
+## Страницы
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Маршрут | Страница | Описание |
+|---------|----------|----------|
+| `/` | Главная | Анимированный маскот с отслеживанием взгляда, анонсы разделов |
+| `/physics` | Физика вокруг | Статья и видео «Почему взрывается попкорн?» |
+| `/light` | Открой свет | Статья и видео «Как сделать свет» |
 
-## React Compiler
+## Что есть на сайте
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Интерактивный маскот** — глаза следят за курсором мыши
+- **Видеоплеер** — встроенное воспроизведение видеороликов
+- **Симуляция молекул** — анимированная визуализация МКТ
+- **Анимация взрыва попкорна** — интерактивная Canvas-анимация
+- **Тест по физике** — 3 вопроса с проверкой ответов
+- **Методичка для учителей** — раскрывающийся блок со сценариями урока
+- **Адаптивный дизайн** — корректное отображение на мобильных, планшетах и ПК
 
-## Expanding the ESLint configuration
+## Технологии
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React 19](https://react.dev/) — UI-библиотека
+- [Vite 8](https://vitejs.dev/) — сборщик и дев-сервер
+- [React Router DOM 7](https://reactrouter.com/) — навигация между страницами
+- [Tailwind CSS 4](https://tailwindcss.com/) — стилизация
+
+## Установка и запуск
+
+```bash
+# Установить зависимости
+npm install
+
+# Запустить локально (режим разработки)
+npm run dev
+
+# Собрать для продакшена
+npm run build
+
+# Посмотреть собранный сайт локально
+npm run preview
+```
+
+После `npm run dev` сайт открывается по адресу `http://localhost:5173`.
+
+## Структура проекта
+
+```
+src/
+├── App.jsx                  # Роутер приложения
+├── Home.jsx                 # Главная страница
+├── PhysicsVideo.jsx         # Страница «Физика вокруг»
+├── LightVideo.jsx           # Страница «Открой свет»
+├── index.css                # Глобальные стили
+├── assets/                  # Изображения и иконки (SVG, PNG, JPG)
+└── components/
+    ├── MoleculeSimulation.jsx   # Симуляция молекул
+    └── popcorn-scene.jsx        # Анимация взрыва попкорна
+
+public/
+├── video/
+│   ├── Final_POP3.mp4       # Видео «Физика вокруг»
+│   └── open-light.mp4       # Видео «Открой свет»
+└── fonts/
+    └── GetVoIPGrotesque.ttf
+```
+
+## Деплой
+
+Сайт является статическим — после сборки (`npm run build`) папку `dist/` можно разместить на любом хостинге.
+
+**Важно:** при использовании React Router необходимо настроить редирект всех запросов на `index.html`.
+
+Для **Apache** — создать файл `dist/.htaccess`:
+```
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
+```
+
+Для **Nginx** — добавить в конфиг сервера:
+```nginx
+location / {
+    try_files $uri $uri/ /index.html;
+}
+```
+
+## Контакты
+
+- Email: [popcorn@magazin-p.ru](mailto:popcorn@magazin-p.ru)
+- ВКонтакте: [vkvideo.ru/@club238840885](https://vkvideo.ru/@club238840885)
+- YouTube: [youtube.com/@popcorn-magazin](https://www.youtube.com/@popcorn-magazin)
