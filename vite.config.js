@@ -12,7 +12,7 @@ export default defineConfig({
       },
     },
   ],
-  base: '/popcorn_proj/',
+  base: '/popcorn-magazin/',
   server: {
     host: '0.0.0.0',
     port: 5173,
